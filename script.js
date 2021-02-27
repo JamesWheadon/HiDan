@@ -43,10 +43,10 @@ let alpha = 1;
 function getHSLColor() {
     let  i = Math.floor(Math.random() * 2);
     if (i === 0) {
-        hue += Math.floor(Math.random() * 10);
+        hue += Math.floor(Math.random() * 30);
     }
     else {
-        hue -= Math.floor(Math.random() * 10);
+        hue -= Math.floor(Math.random() * 30);
     }
     if (hue < 0 || hue >= 360) {
         hue = Math.floor(Math.random() * 360)
