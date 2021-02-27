@@ -13,6 +13,7 @@ function setCharAt(str,index,chr) {
 }
 
 let currentColor = '#FFFFFF'
+let currentColor1 = '#FFFFFF'
 
 function getNextColor() {
     const letters = '0123456789ABCDEF';
@@ -55,6 +56,32 @@ function getHSLColor() {
     return currentColor;
 }
 
+let hue1 = 0;
+let saturation1 = 100;
+let lightness1 = 50;
+let alpha1 = 1;
+
+function getHSL1Color() {
+    let  i = Math.floor(Math.random() * 2);
+    if (i === 0) {
+        hue1 += Math.floor(Math.random() * 5);
+        lightness1 += 1;
+    }
+    else {
+        hue1 -= Math.floor(Math.random() * 5);
+        lightness1 -= 1;
+    }
+    if (hue1 < 0 || hue1 >= 360) {
+        hue1 = Math.floor(Math.random() * 360)
+    }
+    currentColor1 = `hsla(${hue1},${saturation1}%,${lightness1}%,${alpha1})`
+    return currentColor1;
+}
+
 function changeBackground() {
     document.getElementById("body").style.background = getHSLColor();
+}
+
+function changeBackground1() {
+    document.getElementById("body1").style.background = getHSL1Color();
 }
