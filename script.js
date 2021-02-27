@@ -17,7 +17,6 @@ let currentColor = '#FFFFFF'
 function getNextColor() {
     const letters = '0123456789ABCDEF';
     i =  Math.floor(Math.random() * 3)
-    alert(i)
     let firstIndex = letters.indexOf(currentColor[2 * i + 1]);
     let secondIndex = letters.indexOf(currentColor[2 * i + 2]);
     if (secondIndex > 0){
@@ -32,7 +31,6 @@ function getNextColor() {
         currentColor = setCharAt(currentColor, 2 * i + 1, letters[15])
         currentColor = setCharAt(currentColor, 2 * i + 2, letters[15])
     }
-    alert(currentColor);
     return currentColor;
 }
 
