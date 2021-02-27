@@ -35,6 +35,26 @@ function getNextColor() {
     return currentColor;
 }
 
+let hue = 0;
+let saturation = 100;
+let lightness = 50;
+let alpha = 1;
+
+function getHSLColor() {
+    let  i = Math.floor(Math.random() * 2);
+    if (i === 0) {
+        hue += Math.floor(Math.random() * 10);
+    }
+    else {
+        hue -= Math.floor(Math.random() * 10);
+    }
+    if (hue < 0 || hue >= 360) {
+        hue = Math.floor(Math.random() * 360)
+    }
+    currentColor = `hsla(${hue},${saturation}%,${lightness}%,${alpha})`
+    return currentColor;
+}
+
 function changeBackground() {
-    document.getElementById("body").style.background = getNextColor();
+    document.getElementById("body").style.background = getHSLColor();
 }
