@@ -1,8 +1,3 @@
-let col1 = 255;
-let col2 = 255;
-let col3 = 255;
-let colours = [col1, col2, col3];
-
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -10,16 +5,37 @@ function getRandomColor() {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}
 
-function changeBackground() {
-    let i = Math.floor(Math.random() * 3);
-    if (colours[i] > 0) {
-        colours[i] -= 1;
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substring(0,index) + chr + str.substring(index+1);
+}
+
+let currentColor = '#FFFFFF'
+
+function getNextColor() {
+    const letters = '0123456789ABCDEF';
+    i =  Math.floor(Math.random() * 3)
+    alert(i)
+    let firstIndex = letters.indexOf(currentColor[2 * i + 1]);
+    let secondIndex = letters.indexOf(currentColor[2 * i + 2]);
+    if (secondIndex > 0){
+        currentColor = setCharAt(currentColor, 2 * i + 1, letters[firstIndex])
+        currentColor = setCharAt(currentColor, 2 * i + 2, letters[secondIndex - 1])
+    }
+    else if (firstIndex > 0) {
+        currentColor = setCharAt(currentColor, 2 * i + 1, letters[firstIndex - 1])
+        currentColor = setCharAt(currentColor, 2 * i + 2, letters[15])
     }
     else {
-        colours[i] = 255;
+        currentColor = setCharAt(currentColor, 2 * i + 1, letters[15])
+        currentColor = setCharAt(currentColor, 2 * i + 2, letters[15])
     }
-    document.getElementById("body").style.background = getRandomColor();
-    /*document.getElementById("body").style.background-color = rgb(colours[0], colours[1], colours[2]);*/
+    alert(currentColor);
+    return currentColor;
+}
+
+function changeBackground() {
+    document.getElementById("body").style.background = getNextColor();
 }
