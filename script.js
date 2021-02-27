@@ -41,7 +41,7 @@ let saturation = 100;
 let lightness = 50;
 let alpha = 1;
 
-function getHSLColor() {
+/* function getHSLColor() {
     let  i = Math.floor(Math.random() * 2);
     if (i === 0) {
         hue += Math.floor(Math.random() * 30);
@@ -51,6 +51,15 @@ function getHSLColor() {
     }
     if (hue < 0 || hue >= 360) {
         hue = Math.floor(Math.random() * 360)
+    }
+    currentColor = `hsla(${hue},${saturation}%,${lightness}%,${alpha})`
+    return currentColor;
+} */
+
+function getHSLColor() {
+    hue += 1;
+    if (hue === 360) {
+        hue = 0
     }
     currentColor = `hsla(${hue},${saturation}%,${lightness}%,${alpha})`
     return currentColor;
@@ -82,6 +91,7 @@ function changeBackground() {
     document.getElementById("body").style.background = getHSLColor();
 }
 
+setInterval(changeBackground, 500);
 function changeBackground1() {
     document.getElementById("body1").style.background = getHSL1Color();
 }
